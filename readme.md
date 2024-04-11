@@ -6,4 +6,11 @@ The files are organized in a way that each file, or part thereof is easy to copy
 
 ### Recomended way to use this code
 - Fork this repo
-- Clone this repo locally `git clone 
+- `git clone https://github.com/neferent/streamlabs-custom-code-starter.git`
+- It's recomended that you clone this repo for each client you have
+- Download and install [Phoenix Code](https://phcode.io/)
+
+### How to use Phoenix Code to modify this code
+- Open the folder containing the starter kit with Phoenix code
+- Modify the code how you see fit.
+- Use Phoenix Code's live preview to see changes.
