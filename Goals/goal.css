@@ -1,0 +1,5 @@
+/* All html objects will be wrapped in the #wrap div */
+.goal-cont {
+  color: white;
+  background: black;
+}

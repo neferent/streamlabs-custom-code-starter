@@ -1,0 +1,40 @@
+
+
+
+  <html>
+  <head>
+    <title>Streamlabs || End Credits</title>
+  </head>
+  <link rel="stylesheet" type="text/css" href="credits.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="credits.js"></script>
+  <body>
+    <!-- Copy and paste ALL CODE from inside the body element into the End Credits Widget's Custom HTML -->
+  
+    <div class="marquee-wrapper" style="display:none" id="end_credits_container">
+        <span class="title">{credit_title}</span>
+        <span class="sub-title">{credit_subtitle}</span>
+      
+        <!-- container will contain list of credit items -->
+        <div id="credits_container">
+        </div>
+      </div>
+      
+      <!-- enabled types will be appended in marque -->
+      <script type="text/template" id="credit_item">
+        <div>
+            <span class="group-title">{label}</span>
+            <div id="credit_list"></div>
+        </div>
+      </script>
+      
+      <!-- items will be added to credit list -->
+      <!-- list item is invidual donor, follow etc -->
+      <script type="text/template" id="list_item">
+        <span class="credit-container">
+          <span class="credit-text">{value}</span>
+        </span>
+      </script>
+
+  </body>
+</html>

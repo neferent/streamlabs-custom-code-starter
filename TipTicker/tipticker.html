@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>Streamlabs || Tip Ticker</title>
+  </head>
+  <link rel="stylesheet" type="text/css" href="tipticker.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="tipticker.js"></script>
+  <body>
+    <!-- Copy and paste ALL CODE from inside the body element into the Tip Ticker Widget's Custom HTML -->
+
+    <div id="marquee-wrapper">
+      <!-- item will be added or removed by checking div id -->
+      <!-- don't remove id if you want to use current adding and removing logic -->
+      <div
+        class="marquee"
+        style="animation: 'initial'; '-webkit-animation': 'initial'"
+        id="item_container"
+      ></div>
+    </div>
+
+    <!-- item row template -->
+    <script type="text/template" id="ticker_item">
+      <div class="item" style="font: {font_weight} {font_size} {font}; display: inline-block; margin: 0 20px; color: {font_color}">
+        {message}
+      </div>
+    </script>
+
+  </body>
+</html>

@@ -1,7 +1,6 @@
 $(document).ready(() => {
   // Write custom javascript below
 
-  // Vanilla js
   const name = document.getElementById('get_name');
   
   let newName = '';

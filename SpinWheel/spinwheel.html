@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title>Streamlabs || Spin Wheel</title>
+  </head>
+  <link rel="stylesheet" type="text/css" href="spinwheel.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="spinwheel.js"></script>
+  <body>
+    <!-- Copy and paste ALL CODE from inside the body element into the Spin Wheel Widget's Custom HTML -->
+
+    <div id="wheel" ref="wheelContainer" :style="styles.wheel">
+      <img :style="styles.ticker" ref="ticker" :src="settings.ticker.url" />
+      <div id="inner-wheel">
+        <img
+          v-if="settings.centerImage.enabled"
+          :src="settings.centerImage.url"
+          :style="styles.centerImage"
+        />
+        <svg
+          viewBox="-1 -1 2 2"
+          xmlns="http://www.w3.org/2000/svg"
+          version="1.1"
+          :style="'transform: rotate(' + rotation + 'rad)'"
+        >
+          <path
+            v-for="range in ranges"
+            :style="range.style"
+            :d="range.d"
+            class="pie-section"
+          ></path>
+          <text
+            v-for="range in ranges"
+            :x="range.textStyle.x"
+            :y="range.textStyle.y"
+            :font-family="settings.font"
+            :fill="settings.fontColor"
+            :transform="range.textStyle.transform"
+            :font-size="range.textStyle.height"
+            class="pie-text"
+          >
+            {{ range.prize }}
+          </text>
+        </svg>
+      </div>
+    </div>
+  </body>
+</html>
