@@ -48,31 +48,10 @@ html {
 
 .hidden {
   display: hidden;
-  opacity: 0;
 }
 
-#alert-container {
+#get_name {
   font-family: sans-serif;
-  transition: opacity 500ms ease-in;
+  font-size: 22px;
 }
 
-.small-tip {
-  font-size: 12px;
-  color: #555555;
-}
-
-.medium-tip {
-  font-size: 12px;
-  color: #555555;
-}
-
-.large-tip {
-  font-size: 12px;
-  color: #555555;
-}
-
-.small-tip,
-.medium-tip,
-.large-tip {
-  opacity: 1;
-}
