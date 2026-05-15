@@ -1,6 +1,6 @@
 // Please use event listeners to run functions.
 document.addEventListener("onLoad", function (obj) {
-  // obj will be empty for airdrop countdown widget
+  // obj will be empty for Sponsor Banner widget
   // this will fire only once when the widget loads
 });
 
