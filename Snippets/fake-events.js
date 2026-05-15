@@ -10,9 +10,20 @@
 
 document.dispatchEvent(new CustomEvent('onLoad', { detail: {} }));
 
+// onEventReceived — donation example (type varies: 'donation', 'follow', 'subscription', 'bits', ...)
 document.dispatchEvent(new CustomEvent('onEventReceived', { detail: {
-  listener: 'follower-latest',
-  event: { name: 'TestUser', amount: 1 }
+  type: 'donation',
+  from: 'TestUser',
+  to: 'StreamerName',
+  message: 'Test donation message',
+  amount: 15,
+  formattedAmount: '$15.00',
+  currency: 'USD',
+  tag: '$15.00',        // pre-formatted label used by {tag} token in HTML template
+  name: 'TestUser',
+  isTest: true,
+  createdAt: '2026-05-15 21:11:31',
+  createdAtTimestamp: 1778879491286,
 }}));
 
 
