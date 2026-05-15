@@ -1,10 +1,3 @@
-// Please use event listeners to run functions.
-document.addEventListener('onLoad', function(obj) {
-	// obj will be empty for credits widget
-	// this will fire only once when the widget loads
-});
-
-document.addEventListener('onEventReceived', function(obj) {
-  	// obj will contain information about the event
-	
-});
+// The End Credits widget is fully managed by Streamlabs internally.
+// Follower/subscriber/donor lists are populated automatically from the {label} and {value} tokens.
+// Custom JS here can be used for styling or animation but there are no meaningful events to listen for.
