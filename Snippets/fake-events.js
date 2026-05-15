@@ -16,16 +16,69 @@ document.dispatchEvent(new CustomEvent('onEventReceived', { detail: {
 }}));
 
 
-// --- Goal widget ---
+// --- Goal widget (tip goal) ---
 
 document.dispatchEvent(new CustomEvent('goalLoad', { detail: {
-  title: 'Sub Goal',
-  amount: { current: 42, target: 100 },
-  to_go: { ends_at: '2025-12-31' }
+  type: 'tip',
+  title: 'My Goal',
+  percent: 58,
+  ends_at: '2026-05-30 20:44:36',
+  to_go: { value: 14, unit: 'days', formatted_value: '14 days to go' },
+  amount: {
+    current: 58, target: 100, start: 0,
+    currency: 'USD', currency_symbol: '$',
+    formatted_current: '$58.00', formatted_target: '$100.00', formatted_start: '$0.00'
+  },
+  data: { from: 'TestUser', amount: '$58.00', message: 'Test donation' }
 }}));
 
 document.dispatchEvent(new CustomEvent('goalEvent', { detail: {
-  amount: { current: 43 }
+  type: 'tip',
+  title: 'My Goal',
+  percent: 60,
+  ends_at: '2026-05-30 20:44:36',
+  to_go: { value: 14, unit: 'days', formatted_value: '14 days to go' },
+  amount: {
+    current: 60, target: 100, start: 0,
+    currency: 'USD', currency_symbol: '$',
+    formatted_current: '$60.00', formatted_target: '$100.00', formatted_start: '$0.00'
+  },
+  data: { from: 'TestUser', amount: '$2.00', message: 'Another donation' }
+}}));
+
+// --- Goal widget (sub / member goal) ---
+// amount.current is a count, not a dollar value — formatted_current has no currency symbol
+
+document.dispatchEvent(new CustomEvent('goalLoad', { detail: {
+  type: 'sub',
+  platform: 'youtube_account',
+  sub_points_goal: false,
+  title: 'Member Goal',
+  percent: 1,
+  ends_at: '2026-05-28 20:46:02',
+  to_go: { value: 12, unit: 'days', formatted_value: '12 days to go' },
+  amount: {
+    current: 1, target: 100, start: 0,
+    currency: 'USD', currency_symbol: '$',
+    formatted_current: '1', formatted_target: '100', formatted_start: '0'
+  },
+  data: { from: 'TestUser', month: 1 }
+}}));
+
+document.dispatchEvent(new CustomEvent('goalEvent', { detail: {
+  type: 'sub',
+  platform: 'youtube_account',
+  sub_points_goal: false,
+  title: 'Member Goal',
+  percent: 2,
+  ends_at: '2026-05-28 20:46:02',
+  to_go: { value: 12, unit: 'days', formatted_value: '12 days to go' },
+  amount: {
+    current: 2, target: 100, start: 0,
+    currency: 'USD', currency_symbol: '$',
+    formatted_current: '2', formatted_target: '100', formatted_start: '0'
+  },
+  data: { from: 'TestUser', month: 1 }
 }}));
 
 
