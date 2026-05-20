@@ -1,6 +1,6 @@
 # Event List
 
-All Goal widgets are based off the same basic template.
+All Event List widgets are based off the same basic template.
 
 The code supplied here just copied from the default Streamlabs code. The HTML part of the code is wrapped in `<html>` so that it can be rendered in a window.
 
