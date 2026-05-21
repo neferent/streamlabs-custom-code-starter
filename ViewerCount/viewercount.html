@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Streamlabs || Viewer Count</title>
+  </head>
+  <link rel="stylesheet" type="text/css" href="viewercount.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="viewercount.js"></script>
+  <body>
+    <!-- Copy and paste ALL CODE from inside the body element into the Viewer Count Widget's Custom HTML -->
+
+    <!-- all platforms will be added to this container -->
+    <div id="platform_container"></div>
+    <!-- platform item -->
+    <script type="text/template" id="platform_item">
+      <span style="font: {font_weight} {font_size} {font}; margin:20px" id="{platform}_container">
+        <i class="fa fa-{platform} platform-icon" style="color:{platform_color};"></i>
+        <img class="platform-img" width="{font_size}" height="{font_size}">
+        <span style="color:{font_color}" class="{platform}-count"></span>
+      </span>
+    </script>
+
+  </body>
+</html>

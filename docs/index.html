@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Streamlabs Custom Code Starter Kit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #111827;
+      --surface:   #1f2937;
+      --border:    #374151;
+      --text:      #f9fafb;
+      --muted:     #9ca3af;
+      --accent:    #f97316;
+      --accent-h:  #ea6c0a;
+      --radius:    10px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 80px 24px 64px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 36px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: 2px solid var(--accent);
+    }
+    .btn-primary:hover {
+      background: var(--accent-h);
+      border-color: var(--accent-h);
+      text-decoration: none;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 2px solid var(--border);
+    }
+    .btn-secondary:hover {
+      border-color: var(--muted);
+      text-decoration: none;
+    }
+
+    /* ── Sections ── */
+    section {
+      padding: 56px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    section h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    section .section-sub {
+      color: var(--muted);
+      margin-bottom: 32px;
+      font-size: 0.95rem;
+    }
+
+    /* ── Cards grid ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+
+    .card h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card h3 .icon {
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 99px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    /* ── Steps ── */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      counter-reset: steps;
+    }
+
+    .step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      counter-increment: steps;
+      position: relative;
+      padding-top: 48px;
+    }
+
+    .step::before {
+      content: counter(steps);
+      position: absolute;
+      top: 16px;
+      left: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: color-mix(in srgb, var(--accent) 15%, transparent);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .step h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .step p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .step code {
+      font-family: monospace;
+      font-size: 0.82rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1px 5px;
+      color: var(--text);
+    }
+
+    /* ── Notes ── */
+    .note-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .note {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      font-size: 0.9rem;
+    }
+
+    .note .note-icon {
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .note p { color: var(--muted); }
+    .note strong { color: var(--text); }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <!-- ── Hero ── -->
+  <header class="hero">
+    <div class="container">
+      <h1>Streamlabs Custom Code<br/><span>Starter Kit</span></h1>
+      <p>Ready-to-paste HTML, CSS &amp; JS templates for every Streamlabs alert and widget. Copy, customise, done.</p>
+      <div class="btn-group">
+        <a class="btn btn-primary" href="https://github.com/Neferent/streamlabs-custom-code-starter/archive/refs/heads/master.zip">
+          ↓ Download ZIP
+        </a>
+        <a class="btn btn-secondary" href="https://github.com/Neferent/streamlabs-custom-code-starter" target="_blank" rel="noopener">
+          View on GitHub
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ── What's inside ── -->
+    <section>
+      <h2>What's inside</h2>
+      <p class="section-sub">One folder per widget type, each with a <code>.html</code>, <code>.css</code>, and <code>.js</code> file ready to paste.</p>
+      <div class="grid">
+
+        <div class="card">
+          <h3><span class="icon">🔔</span> AlertBox — Twitch</h3>
+          <p>Follow, sub, resub, gift sub, raid, bits, and charity alerts.</p>
+          <div class="tag-list">
+            <span class="tag">follow</span>
+            <span class="tag">sub</span>
+            <span class="tag">resub</span>
+            <span class="tag">giftsub</span>
+            <span class="tag">raid</span>
+            <span class="tag">bits</span>
+            <span class="tag">charity</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3><span class="icon">▶️</span> AlertBox — YouTube</h3>
+          <p>Member, subscriber, and super chat alerts.</p>
+          <div class="tag-list">
+            <span class="tag">member</span>
+            <span class="tag">subscriber</span>
+            <span class="tag">superchat</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3><span class="icon">👤</span> AlertBox — Facebook</h3>
+          <p>Follow, like, share, star, support, and support gifter alerts.</p>
+          <div class="tag-list">
+            <span class="tag">follow</span>
+            <span class="tag">like</span>
+            <span class="tag">share</span>
+            <span class="tag">star</span>
+            <span class="tag">support</span>
+            <span class="tag">supportgifter</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3><span class="icon">🎮</span> AlertBox — More Platforms</h3>
+          <p>Trovo, Picarto, and Streamlabs alerts including tips, merch, and cloudbot.</p>
+          <div class="tag-list">
+            <span class="tag">Trovo</span>
+            <span class="tag">Picarto</span>
+            <span class="tag">Streamlabs</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3><span class="icon">🤝</span> AlertBox — Charity</h3>
+          <p>Alerts for Patreon, Tiltify, Donordrive, ExtraLife, Justgiving, and Treatstream.</p>
+          <div class="tag-list">
+            <span class="tag">Patreon</span>
+            <span class="tag">Tiltify</span>
+            <span class="tag">Donordrive</span>
+            <span class="tag">ExtraLife</span>
+            <span class="tag">Justgiving</span>
+            <span class="tag">Treatstream</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3><span class="icon">💡</span> AlertBox Examples</h3>
+          <p>Three worked examples showing real patterns: built-in size variations, per-character colour randomisation, and Velocity.js wave animations.</p>
+        </div>
+
+        <div class="card">
+          <h3><span class="icon">💬</span> ChatBox</h3>
+          <p>Listens to <code>onEventReceived</code> and renders chat messages with badges and emotes.</p>
+        </div>
+
+        <div class="card">
+          <h3><span class="icon">📋</span> EventList</h3>
+          <p>Displays a live feed of follows, subs, tips, and other stream events.</p>
+        </div>
+
+        <div class="card">
+          <h3><span class="icon">🎯</span> Goals</h3>
+          <p>Tracks tip, sub, follower, bit, and cheer goals via <code>goalLoad</code> and <code>goalEvent</code>.</p>
+        </div>
+
+        <div class="card">
+          <h3><span class="icon">📊</span> Poll</h3>
+          <p>Vue-rendered poll widget. HTML and CSS template provided; visuals are managed by Streamlabs.</p>
+        </div>
+
+        <div class="card">
+          <h3><span class="icon">🏆</span> Streamboss</h3>
+          <p>HP bar and boss image reacting to <code>bossLoad</code>, <code>bossDamaged</code>, and <code>bossKilled</code> events.</p>
+        </div>
+
+        <div class="card">
+          <h3><span class="icon">📢</span> Sponsor Banner</h3>
+          <p>Rotates sponsor images and videos. Layout managed by Streamlabs; CSS customisable.</p>
+        </div>
+
+        <div class="card">
+          <h3><span class="icon">💰</span> Tip Ticker</h3>
+          <p>Scrolling marquee of incoming tips. Uses <code>formattedAmount</code> — not <code>amount</code>, which is always 0 on real donations.</p>
+        </div>
+
+        <div class="card">
+          <h3><span class="icon">👁️</span> Viewer Count</h3>
+          <p>Displays live viewer counts per platform from <code>onEventReceived</code>.</p>
+        </div>
+
+        <div class="card">
+          <h3><span class="icon">🎬</span> End Credits</h3>
+          <p>Scrolling credits widget. Fully managed by Streamlabs; CSS customisable.</p>
+        </div>
+
+        <div class="card">
+          <h3><span class="icon">🫙</span> The Jar</h3>
+          <p>Physics-based tip jar using p2.js. Includes a glass pint and plinko board layout. Paste JS into the Custom JS field.</p>
+        </div>
+
+        <div class="card">
+          <h3><span class="icon">🧩</span> Snippets</h3>
+          <p>Reusable helpers: a CDN dependency loader for alerts, and fake event dispatchers for local testing.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── How to use ── -->
+    <section>
+      <h2>How to use</h2>
+      <p class="section-sub">No build step, no install. It's just copy and paste.</p>
+      <div class="steps">
+        <div class="step">
+          <h3>Download</h3>
+          <p>Grab the ZIP and extract it anywhere on your machine.</p>
+        </div>
+        <div class="step">
+          <h3>Preview locally</h3>
+          <p>Open the folder in <a href="https://phcode.io/" target="_blank" rel="noopener">Phoenix Code</a> and use its built-in live preview to check layout and animations.</p>
+        </div>
+        <div class="step">
+          <h3>Open a widget in Streamlabs</h3>
+          <p>In Streamlabs, open the widget you want to customise and find the Custom HTML / CSS / JS fields.</p>
+        </div>
+        <div class="step">
+          <h3>Paste</h3>
+          <p>Copy the contents of each file into the matching field. For most widgets paste everything inside the <code>&lt;body&gt;</code> tag — the outer HTML wrapper is local-preview scaffolding only.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Good to know ── -->
+    <section>
+      <h2>Good to know</h2>
+      <p class="section-sub">A few things that will save you time.</p>
+      <div class="note-list">
+        <div class="note">
+          <span class="note-icon">🌐</span>
+          <p><strong>Chrome only.</strong> Streamlabs Desktop and OBS embed a Chromium-based browser source. No need for cross-browser compatibility.</p>
+        </div>
+        <div class="note">
+          <span class="note-icon">📦</span>
+          <p><strong>jQuery is pre-loaded.</strong> Streamlabs injects jQuery 3.x automatically. The <code>&lt;script&gt;</code> tag in each HTML file is for local preview only.</p>
+        </div>
+        <div class="note">
+          <span class="note-icon">⏱️</span>
+          <p><strong>Alert duration.</strong> Set your alert duration about 1 second longer than your animation or video to avoid cut-offs. The DOM resets automatically after each alert.</p>
+        </div>
+        <div class="note">
+          <span class="note-icon">🔤</span>
+          <p><strong>Tokens.</strong> Placeholders like <code>{name}</code>, <code>{amount}</code>, and <code>{message}</code> are replaced by Streamlabs at runtime. They won't work in local preview.</p>
+        </div>
+        <div class="note">
+          <span class="note-icon">📡</span>
+          <p><strong>Events won't fire locally.</strong> Use the dispatch calls in <code>Snippets/fake-events.js</code> to simulate events in your browser console during development.</p>
+        </div>
+        <div class="note">
+          <span class="note-icon">💡</span>
+          <p><strong>Third-party libraries in alerts.</strong> Use the <code>ensureDependencies</code> pattern in <code>Snippets/dependency-loader.js</code> to load CDN libraries like Velocity.js or Anime.js before your alert code runs.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <p>
+      Made by <a href="https://github.com/Neferent" target="_blank" rel="noopener">Neferent</a>
+      &nbsp;·&nbsp;
+      <a href="https://github.com/Neferent/streamlabs-custom-code-starter" target="_blank" rel="noopener">GitHub</a>
+    </p>
+  </footer>
+
+</body>
+</html>

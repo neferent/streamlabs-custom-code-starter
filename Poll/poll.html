@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <title>Streamlabs || Poll</title>
+  </head>
+  <link rel="stylesheet" type="text/css" href="poll.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="poll.js"></script>
+  <body>
+    <!-- Copy and paste ALL CODE from inside the body element into the Poll Widget's Custom HTML -->
+
+    <div
+      id="poll-container"
+      :style="styles.pollContainer"
+      :class="{
+      'poll-container--hide': !shouldShow
+    }"
+    >
+      <div id="poll-header-container" :style="styles.pollHeader">
+        <div class="poll-header-title">{{ title }}</div>
+        <div class="poll-header-info">
+          <div class="poll-info-section">
+            <div class="text">{{ total }}</div>
+            <div class="title">Votes</div>
+          </div>
+          <div class="poll-info-section">
+            <div class="text">{{ timeRemaining }}</div>
+            <div class="title">{{ timeLeftRemaining }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="options-container" :style="styles.optionsContainer">
+        <div v-for="option in pollOptions">
+          <div class="option-container">
+            <span class="command-text">{{ command(option) }}</span>
+            <div class="progress-bar-container">
+              <div
+                class="progress-bar"
+                :class="{ 'progress-bar-alt progress-bar--thin': thinBars }"
+                :style="styles.progressBar.bg"
+              >
+                <span
+                  :style="{width:`calc(${percentage(option)}% + ${thinBars ? 8 : 16}px)`, 'background-color': settings.bar_color}"
+                ></span>
+              </div>
+              <div class="progress-bar-text">{{ percentageText(option) }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

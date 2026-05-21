@@ -1,0 +1,32 @@
+<!-- 
+  @token {name} Name of viewer who tipped
+  @token {amount} Amount of tip
+  @token {message}, {userMessage} Message from tipper
+  @token {img} Selected image, IF using Image Gallery
+  @token {messageTemplate} Custom message IF using 'Message Template' settings
+-->
+<html>
+  <head>
+    <title>Streamlabs || Tip</title>
+  </head>
+  <link rel="stylesheet" type="text/css" href="example.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="example.js"></script>
+  <body>
+    <!-- Copy and paste ALL CODE from inside the body element into the Alert Box Custom HTML -->
+  
+  
+      <div id="alert-wrap">
+        <div id="inner-wrap">
+          <!-- Write your custom code here -->
+            <div id="alert-container" class="hidden">Viewer tipped {amount}</div>
+        </div>
+      </div>
+
+
+      <!-- Change text inside of this element to test different alerts -->
+      <div id="get_amount" class="hidden">{amount}</div>
+      
+  
+    </body>
+  </html>
